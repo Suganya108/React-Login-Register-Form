@@ -22,9 +22,8 @@ export const Form = () => {
       .then((data) => {
         console.log("fetch data::", data);
         try {
-          // await Auth.signIn(email, password);
-          // userHasAuthenticated(true);
           if (data.token) {
+            localStorage.token=data.token;
             history.push("/home");
           } else alert(data.message);
         } catch (e) {
@@ -47,7 +46,7 @@ export const Form = () => {
             required: true,
           })}
         />
-        {errors.email?.type === "required" && <p>Your input is required</p>}
+        {errors.email?.type === "required" && <p>Please Enter Your Email ID</p>}
         <label>Password</label>
         <input
           type="password"
@@ -57,6 +56,9 @@ export const Form = () => {
             minLength: 8,
           })}
         />
+        {errors.password?.type === "required" && (
+          <p>Please Enter Your Password</p>
+        )}
 
         <input type="submit" />
       </form>
