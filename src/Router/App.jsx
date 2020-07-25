@@ -7,10 +7,12 @@ import {
   Switch,
 } from 'react-router-dom';
 
+import Home from './Home';
 import Login from './Login';
 import Register from './Register';
 
 function App() {
+  
   return (
     <BrowserRouter>
       <div>
@@ -21,6 +23,9 @@ function App() {
           <i>
             <Link to="/login">Login</Link>
           </i>
+          <i>
+            <Link to="/home">Home</Link>
+          </i>
         </nav>
         <div className="container">
           <Switch>
@@ -29,7 +34,7 @@ function App() {
             <Route path="/login" component={Login} />
             <Route path="/home">
               <center>
-                <h1>Welcome</h1>
+                <Home/>
               </center>
             </Route>
           </Switch>
